@@ -1,0 +1,51 @@
+public class %NAME% {
+  public let id: String
+  public let collectionId: String
+  public let databaseId: String
+  public let createdAt: String
+  public let updatedAt: String
+  public let permissions: [Any]
+  %ATTRIBUTES%
+
+  init(
+    id: String,
+    collectionId: String,
+    databaseId: String,
+    createdAt: String,
+    updatedAt: String,
+    permissions: Permissions,
+    %CONSTRUCTOR_PARAMETERS%
+  ) {
+    self.id = id
+    self.collectionId = collectionId
+    self.databaseId = databaseId
+    self.createdAt = createdAt
+    self.updatedAt = updatedAt
+    self.permissions = permissions
+    %CONSTRUCTOR_ASSIGNMENTS%
+  }
+
+  public static func from(map: [String: Any]) -> %NAME% {
+    return %NAME%(
+        id: map["$id"] as! String,
+        collectionId: map["$collectionId"] as! String,
+        databaseId: map["$databaseId"] as! String,
+        createdAt: map["$createdAt"] as! String,
+        updatedAt: map["$updatedAt"] as! String,
+        permissions: map["$permissions"] as! [Any],
+        %CONSTRUCTOR_ARGUMENTS%
+    )
+  }
+
+  public func toMap() -> [String: Any] {
+    return [
+        "id": id as Any,
+        "collectionId": collectionId as Any,
+        "databaseId": databaseId as Any,
+        "createdAt": createdAt as Any,
+        "updatedAt": updatedAt as Any,
+        "permissions": permissions as Any,
+        %MAP_FIELDS%
+    ]
+  }
+}

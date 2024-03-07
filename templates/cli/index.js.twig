@@ -14,6 +14,8 @@ const { client } = require("./lib/commands/generic");
 const { login, logout } = require("./lib/commands/generic");
 const { init } = require("./lib/commands/init");
 const { deploy } = require("./lib/commands/deploy");
+const { flutter } = require("./lib/commands/flutter");
+const { generate } = require("./lib/commands/generate");
 {% endif %}
 {% for service in spec.services %}
 const { {{ service.name | caseLower }} } = require("./lib/commands/{{ service.name | caseLower }}");
@@ -40,6 +42,8 @@ program
   .addCommand(init)
   .addCommand(deploy)
   .addCommand(logout)
+  .addCommand(flutter)
+  .addCommand(generate)
 {% endif %}
 {% for service in spec.services %}
   .addCommand({{ service.name | caseLower }})

@@ -168,6 +168,41 @@ class CLI extends Node
                 'template'      => 'cli/lib/commands/deploy.js.twig',
             ],
             [
+                'scope'         => 'default',
+                'destination'   => 'lib/commands/flutter.js',
+                'template'      => 'cli/lib/commands/flutter.js.twig',
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'lib/commands/generate.js',
+                'template'      => 'cli/lib/commands/generate.js.twig',
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'flutter_res/apwrite.dart',
+                'template'      => 'cli/flutter_res/appwrite.dart.twig',
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'generator/template_dart.dart',
+                'template'      => 'cli/generator/template_dart.dart.twig',
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'generator/template_ts.ts',
+                'template'      => 'cli/generator/template_ts.ts.twig',
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'generator/template_swift.swift',
+                'template'      => 'cli/generator/template_swift.swift.twig',
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'generator/template_kotlin.kt',
+                'template'      => 'cli/generator/template_kotlin.kt.twig',
+            ],
+            [
                 'scope'         => 'service',
                 'destination'   => '/lib/commands/{{service.name | caseDash}}.js',
                 'template'      => 'cli/lib/commands/command.js.twig',
