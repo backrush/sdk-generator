@@ -1,16 +1,16 @@
 # Contributing
 
-We would ❤️ for you to contribute to Appwrite and help make it better! As a contributor, here are the guidelines we would like you to follow:
+We would ❤️ for you to contribute to Backrush and help make it better! As a contributor, here are the guidelines we would like you to follow:
 
 ## Code of Conduct
 
-Help us keep Appwrite open and inclusive. Please read and follow our [Code of Conduct](/CODE_OF_CONDUCT.md).
+Help us keep Backrush open and inclusive. Please read and follow our [Code of Conduct](/CODE_OF_CONDUCT.md).
 
 ## Installation
 
 To install a working development environment, please follow these instructions:
 
-1. Fork or clone the appwrite/sdk-generator repository.
+1. Fork or clone the backrush/sdk-generator repository.
 
 2. Install Composer dependencies using one of the following options:
 
@@ -36,11 +36,11 @@ docker run --rm --interactive --tty --volume "%cd%":/app composer update --ignor
 ## Creating a Language Class
 
 First, create a new class for the new language in this directory: 
-[/src/SDK/Language](https://github.com/appwrite/sdk-generator/tree/master/src/SDK/Language)
+[/src/SDK/Language](https://github.com/backrush/sdk-generator/tree/master/src/SDK/Language)
 
 
 You can use the interface to know which methods are required to be implemented:
-[/src/SDK/Language.php](https://github.com/appwrite/sdk-generator/blob/master/src/SDK/Language.php)
+[/src/SDK/Language.php](https://github.com/backrush/sdk-generator/blob/master/src/SDK/Language.php)
 
 **getName**
 Name of SDK language, such as JS, PHP, C++, etc.
@@ -75,18 +75,18 @@ Note: The easiest way to get started is to copy an existing language class close
 
 Add your new templates as listed in your language class **getFiles** method. Make sure to follow the [checklist](#sdk-checklist) when building the language templates.
 
-Make sure to follow the object's structure and service separation architecture. We aim to keep Appwrite's developer experience as consistent as possible across different SDKs to make the learning curve as flat as possible.
+Make sure to follow the object's structure and service separation architecture. We aim to keep Backrush's developer experience as consistent as possible across different SDKs to make the learning curve as flat as possible.
 
-> The Appwrite SDK generator adds some filters to the twig templates to allow common code formatting options like converting text to camelCase, snake_case and others. The full list is available in the [SDK class](https://github.com/appwrite/sdk-generator/blob/master/src/SDK/SDK.php#L62)
+> The Backrush SDK generator adds some filters to the twig templates to allow common code formatting options like converting text to camelCase, snake_case and others. The full list is available in the [SDK class](https://github.com/backrush/sdk-generator/blob/master/src/SDK/SDK.php#L62)
 
 When you need to test the API templates output, add your new language instance to the `example.php` file like this:
 
 sdk-generator/blob/master/example.php:
 
 ```php
-    use Appwrite\Spec\Swagger2;
-    use Appwrite\SDK\SDK;
-    use Appwrite\SDK\Language\NewLang;
+    use Backrush\Spec\Swagger2;
+    use Backrush\SDK\SDK;
+    use Backrush\SDK\Language\NewLang;
     
     function getSSLPage($url) {
         $ch = curl_init();
@@ -100,12 +100,12 @@ sdk-generator/blob/master/example.php:
         return $result;
     }
 
-    $spec = getSSLPage('https://appwrite.io/v1/open-api-2.json?extensions=1');
+    $spec = getSSLPage('https://backrush.io/v1/open-api-2.json?extensions=1');
 
     // NewLang
     $sdk  = new SDK(new NewLang(), new Swagger2($spec));
     $sdk
-        ->setLogo('https://appwrite.io/v1/images/console.png')
+        ->setLogo('https://backrush.io/v1/images/console.png')
         ->setLicenseContent('test test test')
         ->setWarning('**WORK IN PROGRESS - NOT READY FOR USAGE**')
     ;
@@ -140,9 +140,9 @@ The following checklist aims to balance consistency among languages and follow e
         - [ ] Set Endpoint Method
         - [ ] Set Self Signed Certificates
     - [ ] Default Headers
-        - [ ] 'appwrite-sdk-version' header
+        - [ ] 'backrush-sdk-version' header
         - [ ] Add 'User-Agent' header with device/server name and version + platform name and version (ubuntu-20.04-php-7.0.1 / android-20.0-flutter-3.0)
-        - [ ] Add 'origin' header with the following syntax `<scheme>://<identifier>` where scheme is one of `http`, `https`, `appwrite-android`, `appwrite-ios`, `appwrite-macos`, `appwrite-windows`, `appwrite-linux`. The identifier is host name for web apps and package name for iOS, Android and other platforms.
+        - [ ] Add 'origin' header with the following syntax `<scheme>://<identifier>` where scheme is one of `http`, `https`, `backrush-android`, `backrush-ios`, `backrushv-macos`, `backrush-windows`, `backrush-linux`. The identifier is host name for web apps and package name for iOS, Android and other platforms.
         - [ ] All global headers in the spec
     - [ ] Methods
         - [ ] addHeader(key, value)
@@ -151,7 +151,7 @@ The following checklist aims to balance consistency among languages and follow e
             - [ ] Parse request params by content type header
             - [ ] Parse response params by content type header
             - [ ] Throw error on bad response
-    - [ ] Handle errors and throw `AppwriteException` with proper information
+    - [ ] Handle errors and throw `BackrushException` with proper information
 - [ ] Service Abstraction (optional)
     - [ ] Constructor receiving an instance of the client class 
 - [ ] Service Class (extends the service abstraction if exists)
@@ -200,7 +200,7 @@ namespace Tests;
 class [Language]Test extends Base
 {
     protected string $language = '[language]';
-    protected string $class = 'Appwrite\SDK\Language\[Language]';
+    protected string $class = 'Backrush\SDK\Language\[Language]';
     protected array $build = [
         //commands required before executing the test
     ];
@@ -230,7 +230,7 @@ namespace Tests;
 class DartTest extends Base
 {
     protected string $language = 'dart';
-    protected string $class = 'Appwrite\SDK\Language\Dart';
+    protected string $class = 'Backrush\SDK\Language\Dart';
     protected array $build = [
         'mkdir -p tests/sdks/dart/tests',
         'cp tests/languages/dart/tests.dart tests/sdks/dart/tests/tests.dart',
@@ -257,13 +257,13 @@ docker run --rm -v $(pwd):$(pwd):rw -w $(pwd) -v /var/run/docker.sock:/var/run/d
 
 ## SDK Generator Interface
 
-* **spec** -- This object is derived from the Appwrite swagger spec
+* **spec** -- This object is derived from the Backrush swagger spec
   * **title** -> The title of the SDK you are generating (normally used as package name.)
-  * **description** -> Description of Appwrite SDK
+  * **description** -> Description of Backrush SDK
   * **namespace** -> SDK Namespace
   * **version** -> SDK Version
-  * **endpoint** -> Default Endpoint (example: "https://appwrite.io/v1")
-  * **host** -> Default Host (example: "appwrite.io")
+  * **endpoint** -> Default Endpoint (example: "https://backrush.io/v1")
+  * **host** -> Default Host (example: "backrush.io")
   * **basePath** -> Default Path to API (example: "/v1")
   * **licenseName** -> Name of license for SDK
   * **licenseURL** -> URL to SDK license
@@ -329,9 +329,9 @@ docker run --rm -v $(pwd):$(pwd):rw -w $(pwd) -v /var/run/docker.sock:/var/run/d
   * **shareTags** -> Social Media Metadata
   * **warning** -> Used for warnings usually communicated within the `README.md`
   * **gettingStarted** -> Raw markdown for getting started
-  * **readme** -> Stores the raw markdown used to generate the `README.md` file. [here](https://github.com/appwrite/sdk-for-flutter/blob/master/README.md)
-  * **changelog** -> Stores the raw markdown used to generate the `changelog.md` file. [here](https://github.com/appwrite/sdk-for-flutter/blob/master/CHANGELOG.md)
-  * **examples** -> Stores the raw markdown used to generate examples for your SDK. An example can be found [here](https://github.com/appwrite/sdk-for-flutter/tree/master/example)
+  * **readme** -> Stores the raw markdown used to generate the `README.md` file. [here](https://github.com/backrush/sdk-for-flutter/blob/master/README.md)
+  * **changelog** -> Stores the raw markdown used to generate the `changelog.md` file. [here](https://github.com/backrush/sdk-for-flutter/blob/master/CHANGELOG.md)
+  * **examples** -> Stores the raw markdown used to generate examples for your SDK. An example can be found [here](https://github.com/backrush/sdk-for-flutter/tree/master/example)
   * **twitterHandle** -> Twitter handle of creator
   * **discordChannel** -> Discord Channel ID for SDK
   * **discordUrl** -> Discord Server Invite for SDK
