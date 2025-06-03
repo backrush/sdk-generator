@@ -1,14 +1,14 @@
 # ⚙️ Appwrite SDK Generator
 
-[![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
-[![Build Status](https://img.shields.io/travis/com/appwrite/sdk-generator?style=flat-square)](https://travis-ci.com/appwrite/sdk-generator)
-[![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
-[![Follow Appwrite on StackShare](https://img.shields.io/badge/follow%20on-stackshare-blue?style=flat-square)](https://stackshare.io/appwrite)
-[![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
+![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)
+![Build Status](https://img.shields.io/travis/com/backrush/sdk-generator?style=flat-square)
+![Twitter Account](https://img.shields.io/twitter/follow/backrush?color=00acee&label=twitter&style=flat-square)
+![Follow Backrush on StackShare](https://img.shields.io/badge/follow%20on-stackshare-blue?style=flat-square)
+[![backrush.io](https://img.shields.io/badge/backrush-.io-f02e65?style=flat-square)](https://backrush.io)
 
 **WORK IN PROGRESS - NOT READY FOR GENERAL USAGE**
 
-[Appwrite](https://appwrite.io) SDK generator is a PHP library for auto-generating SDK libraries for multiple languages and platforms.
+[Backrush](https://backrush.io) SDK generator is a PHP library for auto-generating SDK libraries for multiple languages and platforms.
 
 The SDK Generator uses predefined language settings as [Twig templates](https://twig.symfony.com/) to generate codebases based on different API specs.
 
@@ -42,12 +42,12 @@ Create language and SDK instances and generate code to target directory.
 
 require_once 'vendor/autoload.php';
 
-use Appwrite\Spec\Swagger2;
-use Appwrite\SDK\SDK;
-use Appwrite\SDK\Language\PHP;
+use Backrush\Spec\Swagger2;
+use Backrush\SDK\SDK;
+use Backrush\SDK\Language\PHP;
 
 // Read API specification file (Swagger 2) and create spec instance
-$spec = new Swagger2(file_get_contents('https://appwrite.io/v1/open-api-2.json?extension=1'));
+$spec = new Swagger2(file_get_contents('https://backrush.io/v1/open-api-2.json?extension=1'));
 
 // Create language instance
 $lang = new PHP();
@@ -61,7 +61,7 @@ $lang // Set language or platform specific options
 $sdk  = new SDK($lang, $spec);
 
 $sdk
-    ->setLogo('https://appwrite.io/v1/images/console.png')
+    ->setLogo('https://backrush.io/v1/images/console.png')
     ->setLicenseContent('License content here.')
     ->setVersion('v1.1.0')
 ;
@@ -88,7 +88,7 @@ $sdk->generate(__DIR__ . '/examples/php'); // Generate source code
 | Flutter                |                     | [Effective Dart]       | pub tool           | [@bartektartanus] [@Almoullim] [@lohanidamodar]   |
 | Android (Kotlin, Java) | 5.0+                | [Android style guide]  | Gradle, Maven      | [@abnegate]    |
 | iOS, macOS (Swift)     | iOS 15+, macOS 11+  | [Swift Style Guide]    | Swift Pkg Manager  | [@abnegate]    |
-| Unity (Csharp)         |                     |                        | ?                  | [You?](https://github.com/appwrite/sdk-generator/issues/20) |
+| Unity (Csharp)         |                     |                        | ?                  | [You?](https://github.com/backrush/sdk-generator/issues/20) |
 
 ## Supported Server SDKs
 
@@ -102,7 +102,7 @@ $sdk->generate(__DIR__ . '/examples/php'); // Generate source code
 | Dart       | 2.7+                | [Effective Dart]       | pub                | [@lohanidamodar] |
 | Go         |                     | [Effective Go]         | go get             | [@panz3r] [@phaus]      |
 | .NET       | .NET core 3.1       | [C# Coding Conventions]| NuGet              | [@komemi] [@TorstenDittmann]     |
-| D          |                     |                        | ?                  | [You?](https://github.com/appwrite/sdk-generator/issues/20) |
+| D          |                     |                        | ?                  | [You?](https://github.com/backrush/sdk-generator/issues/20) |
 | Kotlin     | 1.4.31+             | [Kotlin style guide]   | Gradle, Maven      | [@abnegate]    |
 | Java       | 8+                  | [Google style guide]   | Gradle, Maven      | [@abnegate]    |
 | Swift      | 5.5+                | [Swift Style Guide]    | Swift Pkg Manager  | [@abnegate]    |
